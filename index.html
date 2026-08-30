@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>✦ Donde la espera ya no me cabe en el pecho ✦</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(130,85,180,.18), transparent 30%),
+        radial-gradient(circle at 15% 80%, rgba(92,54,150,.12), transparent 35%),
+        linear-gradient(180deg,#080711 0%,#0d0a18 45%,#05050c 100%);
+    color:#f7efff;
+    font-family:'Cormorant Garamond',serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+.sky{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    overflow:hidden;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 4s infinite ease-in-out;
+}
+
+.star:nth-child(1){top:8%;left:12%;animation-delay:.5s}
+.star:nth-child(2){top:18%;left:82%;animation-delay:1.2s}
+.star:nth-child(3){top:28%;left:31%;animation-delay:2s}
+.star:nth-child(4){top:37%;left:67%;animation-delay:.8s}
+.star:nth-child(5){top:48%;left:8%;animation-delay:2.5s}
+.star:nth-child(6){top:54%;left:91%;animation-delay:1.5s}
+.star:nth-child(7){top:63%;left:24%;animation-delay:3s}
+.star:nth-child(8){top:72%;left:76%;animation-delay:1.7s}
+.star:nth-child(9){top:84%;left:43%;animation-delay:.9s}
+.star:nth-child(10){top:12%;left:53%;animation-delay:2.8s}
+.star:nth-child(11){top:43%;left:48%;animation-delay:1.1s}
+.star:nth-child(12){top:91%;left:14%;animation-delay:2.2s}
+.star:nth-child(13){top:33%;left:96%;animation-delay:3.2s}
+.star:nth-child(14){top:76%;left:56%;animation-delay:.4s}
+.star:nth-child(15){top:23%;left:6%;animation-delay:1.8s}
+.star:nth-child(16){top:67%;left:88%;animation-delay:2.7s}
+.star:nth-child(17){top:4%;left:37%;animation-delay:1.3s}
+.star:nth-child(18){top:58%;left:38%;animation-delay:3.1s}
+.star:nth-child(19){top:88%;left:69%;animation-delay:2.4s}
+.star:nth-child(20){top:15%;left:94%;animation-delay:.7s}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.25;
+        transform:scale(.8);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+main{
+    position:relative;
+    z-index:2;
+    width:min(900px,92%);
+    margin:auto;
+    padding:70px 0 60px;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.moon{
+    width:92px;
+    height:92px;
+    margin:0 auto 30px;
+    border-radius:50%;
+    background:#f8f0d8;
+    box-shadow:
+        0 0 25px rgba(255,245,210,.45),
+        0 0 80px rgba(214,184,255,.16);
+    position:relative;
+    animation:moonFloat 5s ease-in-out infinite;
+}
+
+.moon:after{
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#0a0912;
+    left:27px;
+    top:-10px;
+}
+
+@keyframes moonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+.small-title{
+    font-family:'Cinzel',serif;
+    font-size:.78rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#bda6d9;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:'Cinzel',serif;
+    font-size:clamp(1.7rem,5vw,3rem);
+    line-height:1.35;
+    font-weight:600;
+    letter-spacing:1px;
+    text-shadow:0 0 25px rgba(217,178,255,.22);
+}
+
+.date{
+    margin-top:20px;
+    color:#bdaecb;
+    font-size:1.15rem;
+}
+
+.nickname{
+    margin-top:10px;
+    color:#e7c9ff;
+    font-size:1.3rem;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.letter{
+    position:relative;
+    padding:48px clamp(24px,7vw,70px);
+    border:1px solid rgba(222,194,255,.15);
+    border-radius:28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(90,57,125,.045)
+        );
+    backdrop-filter:blur(12px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 0 45px rgba(177,121,220,.035);
+}
+
+.letter:before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(220,187,249,.06);
+    border-radius:21px;
+    pointer-events:none;
+}
+
+.letter p{
+    position:relative;
+    font-size:clamp(1.18rem,2.5vw,1.4rem);
+    line-height:1.85;
+    margin-bottom:24px;
+    color:#eee5f3;
+}
+
+.highlight{
+    color:#f5d9ff;
+    text-shadow:0 0 12px rgba(225,178,255,.22);
+}
+
+.strong{
+    color:#fff;
+    font-weight:600;
+}
+
+.quote{
+    margin:35px 0;
+    padding:25px 22px;
+    text-align:center;
+    border-left:1px solid rgba(225,190,255,.5);
+    border-right:1px solid rgba(225,190,255,.5);
+    color:#f1dfff;
+    font-size:clamp(1.35rem,3vw,1.65rem)!important;
+    font-style:italic;
+}
+
+/* =========================
+   CUENTA REGRESIVA SIMBÓLICA
+========================= */
+
+.waiting{
+    margin:40px auto 10px;
+    text-align:center;
+    padding:25px;
+}
+
+.waiting-label{
+    font-family:'Cinzel',serif;
+    font-size:.75rem;
+    letter-spacing:3px;
+    color:#9e8bab;
+    text-transform:uppercase;
+}
+
+.waiting-number{
+    margin-top:10px;
+    font-family:'Cinzel',serif;
+    font-size:1.4rem;
+    color:#e9ceff;
+}
+
+/* =========================
+   FRASE FINAL
+========================= */
+
+.final{
+    text-align:center;
+    margin:55px 10px 40px;
+}
+
+.final-line{
+    width:60px;
+    height:1px;
+    background:rgba(227,196,255,.45);
+    margin:0 auto 28px;
+}
+
+.final p{
+    font-size:clamp(1.35rem,3.5vw,1.8rem);
+    line-height:1.7;
+    color:#f2e5f7;
+}
+
+.final-name{
+    margin-top:22px;
+    font-family:'Cinzel',serif;
+    font-size:clamp(1rem,3vw,1.25rem);
+    letter-spacing:2px;
+    color:#edccff;
+}
+
+/* =========================
+   BOTÓN DEL POEMA
+========================= */
+
+.poem-area{
+    text-align:center;
+    margin-top:40px;
+}
+
+.poem-label{
+    font-size:1.05rem;
+    color:#aa9ab8;
+    margin-bottom:18px;
+}
+
+.poem-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 30px;
+    border-radius:50px;
+    text-decoration:none;
+    font-family:'Cinzel',serif;
+    font-size:.9rem;
+    letter-spacing:1px;
+    color:#fff;
+    background:rgba(133,82,174,.22);
+    border:1px solid rgba(225,192,255,.35);
+    box-shadow:
+        0 0 20px rgba(162,103,205,.12),
+        inset 0 0 20px rgba(255,255,255,.025);
+    transition:.35s ease;
+}
+
+.poem-button:hover{
+    transform:translateY(-4px);
+    background:rgba(157,100,198,.32);
+    box-shadow:
+        0 10px 35px rgba(103,57,137,.25),
+        0 0 30px rgba(213,169,245,.15);
+}
+
+.poem-button span{
+    font-size:1.2rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    margin-top:55px;
+    color:#716579;
+    font-size:.95rem;
+    letter-spacing:1px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    main{
+        padding-top:50px;
+    }
+
+    .moon{
+        width:72px;
+        height:72px;
+    }
+
+    .moon:after{
+        width:70px;
+        height:70px;
+        left:22px;
+        top:-8px;
+    }
+
+    .letter{
+        padding:38px 25px;
+        border-radius:22px;
+    }
+
+    .letter p{
+        line-height:1.75;
+    }
+
+    .quote{
+        padding:20px 12px;
+    }
+
+    .poem-button{
+        width:100%;
+        max-width:330px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+    <span class="star"></span>
+</div>
+
+<main>
+
+    <header class="header">
+
+        <div class="moon"></div>
+
+        <div class="small-title">
+            Una noche escrita para ti
+        </div>
+
+        <h1>
+            ✦ DONDE LA ESPERA YA NO ME CABE EN EL PECHO ✦
+        </h1>
+
+        <div class="date">
+            Sábado, 29 de agosto de 2026 — por la noche
+        </div>
+
+        <div class="nickname">
+            Para ti, mi Anhelo de Medianoche ❤️‍🔥
+        </div>
+
+    </header>
+
+
+    <section class="letter">
+
+        <p>
+            Mi princesa, falta apenas
+            <span class="highlight">un día y medio para volver a verte</span>,
+            y no sabes cuánto te extraño. ❤️
+        </p>
+
+        <p>
+            Créeme, lo primero que quiero cuando estés frente a mí es
+            <span class="strong">besarte y abrazarte tan fuerte</span>
+            que por unos segundos se me olvide todo lo demás.
+            Porque me haces demasiada falta.
+        </p>
+
+        <p>
+            Tengo que confesarte algo: aunque confío muchísimo en ti,
+            a veces mi cabeza se me desordena y termino teniendo algún
+            que otro problemita. Hoy me pasaron un par de cosas,
+            pero no quiero preocuparte con mis problemas, amor.
+            Te los contaré después, cuando ya los haya solucionado. ❤️
+        </p>
+
+        <p>
+            Y hemos hablamos por teléfono hoy pero no es lo mismo que hacerlo en persona, 
+            Y esta noche, solo puedo imaginar que estás aquí conmigo…
+            yo acostado sobre tu pecho, escuchando tu corazón,
+            o simplemente frente a ti,
+            <span class="highlight">mirándote fijamente a los ojos durante un largo rato.</span>
+        </p>
+
+        <div class="quote">
+            “¿Sabes lo hermosos que son tus ojos?
+            Podría quedarme perdido en ellos toda la noche.”
+        </div>
+
+        <p>
+            Pero lo más hermoso sería no tener que imaginarlo.
+        </p>
+
+        <p>
+            Porque ya casi no quiero extrañarte.
+            <span class="strong">Quiero tenerte entre mis brazos.</span>
+            Quiero besarte.
+            Quiero mirarte.
+            Quiero tenerte conmigo. ❤️‍🔥
+        </p>
+
+        <p style="text-align:center; margin-top:35px;">
+            Te amo, mi princesa.
+        </p>
+
+    </section>
+
+
+    <section class="waiting">
+
+        <div class="waiting-label">
+            La distancia solamente está contando las horas...
+        </div>
+
+        <div class="waiting-number">
+            ✦ Ya casi vuelvo a encontrarte ✦
+        </div>
+
+    </section>
+
+
+    <section class="final">
+
+        <div class="final-line"></div>
+
+        <p>
+            Y si esta noche pudiera pedirle un solo deseo a la luna,
+            no pediría que el tiempo pasara más rápido;
+            pediría que, cuando por fin estés frente a mí,
+            pueda abrazarte tan fuerte que entiendas,
+            sin que tenga que decir una sola palabra,
+            cuánto te he extrañado y cuánto te amo.
+        </p>
+
+        <div class="final-name">
+            TE AMO MUCHÍSIMO VALERIA PETRO VILLAZÓN ❤️
+        </div>
+
+    </section>
+
+
+    <section class="poem-area">
+
+        <div class="poem-label">
+            Y porque esta noche también tiene unos versos solamente para ti...
+        </div>
+
+        <a
+            class="poem-button"
+            href="AQUI_VA_EL_LINK_DEL_POEMA"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <span>✦</span>
+            Leer el poema de esta noche
+            <span>❤️</span>
+        </a>
+
+    </section>
+
+
+    <footer>
+        Hecho para ti, para esta noche y para este amor.
+    </footer>
+
+</main>
+
+</body>
+  </html>
